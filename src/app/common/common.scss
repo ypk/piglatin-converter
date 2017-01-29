@@ -1,0 +1,39 @@
+// colors
+$white:                    #ffffff;
+$black:                    #000000;
+$black-variant:            #333333;
+$gray-variant-1:           #dddddd;
+$gray-variant-2:           #BEC4C8;
+$dark-blue:                #0a3152;
+$dark-blue-variant-1:      #07253F;
+$header-background:        $dark-blue;
+$primary:                  #03A9F4;
+$primary-accent:           #f9676b;
+
+html, body {
+    font-family: sans-serif;
+    text-rendering: optimizeLegibility;
+    font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: $black-variant;
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+}
+
+.input{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: transparent;
+  border: 1px solid $gray-variant-2;
+  border-radius: 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  color: $dark-blue;
+  display: block;
+  font-size: 15px;
+  height: 40px;
+  line-height: 1.42857;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+}
