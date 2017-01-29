@@ -37,3 +37,9 @@ html, body {
   transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
   width: 100%;
 }
+
+.app{
+  margin: 0px;
+  padding: 0px;
+  background: $primary-accent;
+}
