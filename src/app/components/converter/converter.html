@@ -1,0 +1,7 @@
+<form class="form" ng-submit="$ctrl.onSubmit()">
+  <p>The following form would convert Plain English to PigLatin. Please type in English words and press Convert when done.</p>
+  <div class="form-converter">
+    <input type="text" name="query" placeholder="Apple" required class="form-control input" ng-model="$ctrl.query" value="" ng-model-options="{allowInvalid: true, debounce: 250}" />
+    <input type="submit" class="form-control btn" value="Convert" />
+  </div>
+</form>

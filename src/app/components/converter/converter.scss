@@ -1,0 +1,52 @@
+@import "../../common/common";
+
+form {
+    &.form {
+        display: block;
+        margin: 30px auto;
+
+        .form-converter {
+            margin: 30px auto;
+
+            .form-control {
+                display: block;
+                width: 100%;
+                margin: 15px auto;
+                outline: none;
+
+                &.input {
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                    background-color: transparent;
+                    border: 1px solid $gray-variant-2;
+                    border-radius: 0;
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+                    color: $dark-blue;
+                    display: block;
+                    font-size: 15px;
+                    height: 40px;
+                    line-height: 1.42857;
+                    padding: 6px 12px;
+                    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+                    width: 100%;
+                }
+
+                &.btn {
+                    color: $white;
+                    border: 1px solid $primary;
+                    background: $primary;
+                    text-transform: uppercase;
+                    font-kerning: 12px;
+                    padding: 12px;
+                    cursor: pointer;
+
+                    &:focus,
+                    &:hover {
+                        background: $primary-accent;
+                        border-color: $primary-accent;
+                    }
+                }
+            }
+        }
+    }
+}
