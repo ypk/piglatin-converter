@@ -26,7 +26,7 @@ class converterController {
     }
     updateResult(result){
       let querySize = this.queries.length;
-      if(querySize > 10){
+      if(querySize >= 10){
         this.queries.shift();
       }
       this.queries.push({
