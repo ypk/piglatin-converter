@@ -31,7 +31,7 @@ class converterController {
       }
       this.queries.push({
           "query": this.query,
-          "result": resultString
+          "result": result
       });
     }
     onSubmit() {
@@ -40,8 +40,7 @@ class converterController {
             alert("Please fill in");
         }
         let resultString = this.convert(this.query);
-        this.result = resultString;
-        updateResult(this.result);
+        this.updateResult(resultString);
     }
 }
 
