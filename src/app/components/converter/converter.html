@@ -1,7 +1,27 @@
 <form class="form" ng-submit="$ctrl.onSubmit()">
   <p>The following form would convert Plain English to PigLatin. Please type in English words and press Convert when done.</p>
   <div class="form-converter">
-    <input type="text" name="query" placeholder="Apple" required class="form-control input" ng-model="$ctrl.query" value="" ng-model-options="{allowInvalid: true, debounce: 250}" />
+    <input type="text" name="query" placeholder="Apple" ng-change="$ctrl.onChange()" required class="form-control input" ng-model="$ctrl.query" value="" ng-model-options="{allowInvalid: true, debounce: 250}" />
     <input type="submit" class="form-control btn" value="Convert" />
+  </div>
+  <div class="result" ng-if="$ctrl.result!==undefined">
+      <p class="translated-query">{{$ctrl.query}}</p> translated into pig latin is
+      <p class="translated-result">{{$ctrl.result}}</p>
+  </div>
+  <div class="history">
+    <h3>Conversion History</h3>
+    <p class="history-message" ng-if="$ctrl.queries.length===0">
+      Unfortunately, there are no translations saved at the moment.
+    </p>
+    <ul class="history-list"  ng-if="$ctrl.queries.length!==0">
+      <li class="list-item heading">
+        <div class="query">English</div>
+        <div class="query-result">Pig Latin</div>
+      </li>
+      <li class="list-item" ng-repeat="queryItem in $ctrl.queries">
+        <div class="query" ng-bind="queryItem.query"></div>
+        <div class="query-result" ng-bind="queryItem.result"></div>
+      </li>
+    </ul>
   </div>
 </form>

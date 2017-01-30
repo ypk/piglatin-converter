@@ -2,10 +2,12 @@ class converterController {
     constructor() {
         this.name = 'converter';
         this.query = "";
+        this.queries = [];
+        this.result = undefined;
     }
 
     translateWord(word) {
-        var lowerCaseWord = word.toLowerCase();
+        let lowerCaseWord = word.toLowerCase();
         if (!lowerCaseWord || lowerCaseWord.match(/^[aeiou]/)) {
             return lowerCaseWord + "way";
         } else {
@@ -13,19 +15,33 @@ class converterController {
         }
     }
     convert(stringToConvert) {
-        var wordsInEnglish = stringToConvert.split(/\W+/);
-        var wordsInPigLatin = wordsInEnglish.map((word) => {
+        let wordsInEnglish = stringToConvert.split(/\W+/);
+        let wordsInPigLatin = wordsInEnglish.map((word) => {
             return this.translateWord(word);
         });
         return wordsInPigLatin.join(" ");
+    }
+    onChange() {
+        this.result = undefined;
+    }
+    updateResult(result){
+      let querySize = this.queries.length;
+      if(querySize > 10){
+        this.queries.shift();
+      }
+      this.queries.push({
+          "query": this.query,
+          "result": resultString
+      });
     }
     onSubmit() {
         //sanity check
         if (typeof this.query === undefined || this.query === "") {
             alert("Please fill in");
         }
-        let string = this.convert(this.query);
-        console.log(string);
+        let resultString = this.convert(this.query);
+        this.result = resultString;
+        updateResult(this.result);
     }
 }
 
