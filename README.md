@@ -1,4 +1,4 @@
-## cobalt piglatin converter demo
+## piglatin converter
 
 What does this converter do?
 
