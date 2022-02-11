@@ -20,7 +20,7 @@
     "file-loader": "^0.10.0",
     "ng-annotate": "^1.2.1",
     "ng-annotate-loader": "^0.2.0",
-    "node-sass": "^4.4.0",
+    "node-sass": "^7.0.0",
     "normalize.css": "^5.0.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.1.1",
