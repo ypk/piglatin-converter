@@ -1,54 +1,69 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
-var appPath = path.resolve(__dirname, 'src/app', 'app.js');
-var buildPath = path.resolve(__dirname, 'src');
+const root = path.resolve(__dirname, 'src');
+const dest = path.resolve( __dirname, '.tmp' );
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-var webpackConfig = {
-    devtool: 'inline-source-map',
-    entry: [
-        appPath
-    ],
+
+module.exports = {
+    context: root,
+    resolve: {
+        extensions: ['.js']
+    },
+    devtool: 'cheap-module-source-map',
+    entry: './index.js',
     module: {
         loaders: [{
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'stage-0']
-                },
                 test: /\.js$/,
                 exclude: /node_modules/
             }, {
                 test: /\.scss$/,
-                loader: 'style-loader!css-loader!sass-loader'
+                use : ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader'],
+                    publicPath: "../"
+                })
             }, {
                 test: /\.html$/,
-                loader: 'raw-loader'
-            }, {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file?name=fonts/[name].[ext]'
-            }, {
-                test: /\.(woff|woff2)$/,
-                loader: 'url?prefix=font/&limit=5000&name=fonts/[name].[ext]'
-            }, {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/octet-stream&name=fonts/[name].[ext]'
-            }, {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=image/svg+xml&name=fonts/[name].[ext]'
+                exclude: /index.html$/,
+                use: 'raw-loader'
+            }, 
+            {
+                test: /\.(jpg|png|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        esModule: false,
+                    },
+                }],
+            },
+            {
+                test: /\.(svg|woff|woff2|eot|ttf)$/,
+                use: 'file-loader?outputPath=fonts/'
             },
         ]
     },
     output: {
-        path: buildPath,
-        filename: 'bundle.js'
+        path: dest,
+        filename: 'js/index.js'
     },
     devServer: {
-        contentBase: buildPath,
-        hot: true
+        contentBase: dest,
+        compress: true,
+        port: 9000
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new HtmlWebpackPlugin({
+            title: 'Pig Latin Converter',
+            template: 'index.html',
+            inject: true
+        }),
+        new LoaderOptionsPlugin({
+            debug: true,
+        }),
+        new ExtractTextPlugin('css/style.css')
     ]
 };
-
-module.exports = webpackConfig;
