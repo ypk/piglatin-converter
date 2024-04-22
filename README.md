@@ -23,7 +23,7 @@ You can include third party libraries to do things like nicely output alerts, or
 
 ### Conversion Rules
 
-As per Wikipedia’s article on Pig Latin [enter link description here](https://en.wikipedia.org/wiki/Pig_Latin)
+As per Wikipedia’s article on Pig Latin [https://en.wikipedia.org/wiki/Pig_Latin](https://en.wikipedia.org/wiki/Pig_Latin)
 
 1. All words beginning with consonants should move the first letter to the end, and then add “ay” on the end.
 
